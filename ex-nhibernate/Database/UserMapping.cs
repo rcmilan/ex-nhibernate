@@ -7,7 +7,7 @@ namespace ex_nhibernate.Database
     {
         public UserMapping()
         {
-            Table("Users");
+            Table(nameof(User));
 
             Id(u => u.Id).GeneratedBy.Identity();
             Map(u => u.Name).Not.Nullable();

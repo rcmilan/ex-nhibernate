@@ -8,8 +8,14 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new Exception();
+
+        Console.WriteLine("Migrations...");
+        MigrationRunner.RunMigrations(connectionString);
+        Console.WriteLine("Migrations Ok!");
+
         // Add services to the container.
-        builder.Services.AddNHibernate(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new Exception());
+        builder.Services.AddNHibernate(connectionString);
 
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
