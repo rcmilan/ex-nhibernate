@@ -7,7 +7,7 @@ public class UserMapping : ClassMap<User>
 {
     public UserMapping()
     {
-        Table(nameof(User));
+        Table($"[{nameof(User)}]");
 
         Id(u => u.Id).GeneratedBy.Identity();
         Map(u => u.Name).Not.Nullable();

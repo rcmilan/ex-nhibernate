@@ -1,7 +1,6 @@
 ﻿using ex_nhibernate.Domain;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
-using System.Transactions;
 
 namespace ex_nhibernate.Controllers;
 
@@ -9,8 +8,6 @@ namespace ex_nhibernate.Controllers;
 [ApiController]
 public class UsersController : ControllerBase
 {
-
-
     [HttpGet]
     public async Task<ActionResult<User>> Get([FromServices] NHibernate.ISession _session)
     {
@@ -38,7 +35,8 @@ public class UsersController : ControllerBase
         }
 
         // Get created User
+        var result = await _session.GetAsync<User>(newUser.Id);
 
-        return Ok(new User());
+        return Ok(result);
     }
 }
