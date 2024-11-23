@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ex_nhibernate.Domain;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ex_nhibernate.Controllers;
 
@@ -6,4 +7,9 @@ namespace ex_nhibernate.Controllers;
 [ApiController]
 public class UsersController : ControllerBase
 {
+    [HttpGet]
+    public async Task<ActionResult<User>> Get()
+    {
+        return Ok(new User());
+    }
 }

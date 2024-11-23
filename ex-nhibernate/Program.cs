@@ -1,3 +1,5 @@
+using ex_nhibernate.Database;
+
 namespace ex_nhibernate;
 
 public class Program
@@ -7,6 +9,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddNHibernate(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new Exception());
 
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
