@@ -40,7 +40,6 @@ namespace ex_nhibernate.Database
             using var scope = serviceProvider.CreateScope();
             var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
 
-
             runner.MigrateUp();
         }
     }
